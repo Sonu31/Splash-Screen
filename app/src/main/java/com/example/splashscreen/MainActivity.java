@@ -2,7 +2,9 @@ package com.example.splashscreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -10,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+private static int SPLASH_SCREE= 5000;
     //variables
 
     Animation topAnim, bottomAnim;
@@ -35,8 +37,15 @@ public class MainActivity extends AppCompatActivity {
         logo.setAnimation(bottomAnim);
 
 
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                Intent intent = new Intent (MainActivity.this,Dashboard.class);
+                startActivity(intent);
+                finish();
+            }
 
-
+        },SPLASH_SCREE);
 
     }
 }
